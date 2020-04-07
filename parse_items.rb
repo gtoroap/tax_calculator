@@ -14,7 +14,7 @@ class ParseItems
       end
       items
     rescue
-      puts "There was an error trying to open the file. Check an try again."
+      nil
     end
   end
 end

@@ -6,6 +6,8 @@ class TaxHandler
   end
 
   def classify
+    return unless @items
+
     @items.each do |item|
       item.tax = 0.10 unless NOT_TAXABLE =~ item.description
       item.tax = (item.tax + 0.05).truncate(2) if item.imported

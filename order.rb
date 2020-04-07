@@ -8,19 +8,25 @@ class Order
     @items = ParseItems.from_file(@input_file)
   end
 
-  def output
-    return unless @items
+  def has_items?
+    @items
+  end
 
+  def output
+    return unless has_items?
+
+    lines = []
     tax_handler = TaxHandler.new(@items)
     taxed_items = tax_handler.classify
     sales_taxes = tax_handler.calculate
     total = tax_handler.totalize
 
     taxed_items.each do |item|
-      puts "#{item.quantity} #{item.description}: #{item.quantity * item.price_plus_taxes}"
+      lines << "#{item.quantity} #{item.description}: #{item.quantity * item.price_plus_taxes}"
     end
     
-    puts "Sales Taxes: #{sales_taxes.ceil(2)}"
-    puts "Total: #{total.ceil(2)}"
+    lines << "Sales Taxes: #{sales_taxes.ceil(2)}"
+    lines << "Total: #{total.ceil(2)}"
+    lines
   end
 end
