@@ -17,11 +17,11 @@ class TaxHandler
   end
 
   def calculate
-    @items.map(&:taxes).sum
+    @items.map(&:taxes).sum.ceil(2)
   end
 
   def totalize
-    @items.map {|item| item.quantity * item.price_plus_taxes}.sum
+    @items.map {|item| item.quantity * item.price_plus_taxes}.sum.ceil(2)
   end
 
   def ceil_to(number, precision)

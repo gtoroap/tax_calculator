@@ -17,5 +17,7 @@ RSpec.configure do |config|
 
   require './order.rb'
   require './item.rb'
+  require './parse_items.rb'
+  require './tax_handler.rb'
 
 end

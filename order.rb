@@ -25,8 +25,8 @@ class Order
       lines << "#{item.quantity} #{item.description}: #{item.quantity * item.price_plus_taxes}"
     end
     
-    lines << "Sales Taxes: #{sales_taxes.ceil(2)}"
-    lines << "Total: #{total.ceil(2)}"
+    lines << "Sales Taxes: #{sales_taxes}"
+    lines << "Total: #{total}"
     lines
   end
 end
