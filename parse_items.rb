@@ -10,7 +10,7 @@ class ParseItems
       file_data = file.readlines.map(&:chomp)
       file_data.each do |line|
         item = MATCHER_LINE_ITEM.match(line)
-        items << Item.new(item[1], item[2], item[3], "#{item[4]}.#{item[5]}".to_f)
+        items << Item.new(item[1].to_i, item[2], item[3], "#{item[4]}.#{item[5]}".to_f)
       end
       items
     rescue
